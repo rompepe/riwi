@@ -1,63 +1,95 @@
-function guardarUsuario() {
-    // Recibimos los valores y los guardamos en las variables
-  let nombres = document.getElementById("nombres");
-  let apellidos = document.getElementById("apellidos");
-  let correo = document.getElementById("correo");
-
-    if (nombres.value != "" && apellidos.value != "" && correo.value != "") {
-        // guardamos el id de la tabla en una variable
-        let tabla = document.getElementById("tablaContenido");
-        let cuerpoTabla = document.getElementById("cuerpoTabla");
-        // A la variable cuerpoTabla le insertamos una fila y la guardamos en la variable fila
-        let fila = cuerpoTabla.insertRow(-1);
-        // creamos variables donde le insertamos la fila creada anteriormente y le insertamos celdas
-        let celdaNombre = fila.insertCell(0);
-        let celdaApellidos = fila.insertCell(1);
-        let celdaCorreo = fila.insertCell(2);
-        // a las celdas creadas se le insertan las variables donde tenemos los datos ingresados con el innertext
+function themepage(){
+    var themepage = document.getElementById('theme').value;
+    console.log("teme es...",themepage)
+    if(themepage == 'light' || themepage != 'dark'){
+        document.getElementById('body').classList.remove('theme-dark');
+        document.getElementById('body').classList.add('theme-light');
         
-        celdaNombre.innerText = nombres.value;
-        celdaApellidos.innerText = apellidos.value;
-        celdaCorreo.innerText = correo.value;
-        // Limpiamos los elementos para que los cajones queden vacios
-        nombres.value = "";
-        apellidos.value = "";
-        correo.value = "";
-        // Removemos los validos y los invalido al final
-        nombres.classList.remove("is-valid")
-        nombres.classList.remove("is-invalid")
-        
-        apellidos.classList.remove("is-valid")
-        apellidos.classList.remove("is-invalid")
+    }else{
+        document.getElementById('body').classList.remove('theme-light');
+        document.getElementById('body').classList.add('theme-dark');
 
-        correo.classList.remove("is-valid")
-        correo.classList.remove("is-invalid")
-    }else {
-        if (nombres.value == "") {
-            nombres.focus()
-            nombres.classList.add("is-invalid")
-            nombres.classList.remove("is-valid")
-        }else{
-            nombres.classList.remove("is-invalid")
-            nombres.classList.add("is-valid")
-        }
-        if (apellidos.value == "") {
-            apellidos.focus()
-            apellidos.classList.add("is-invalid")
-            apellidos.classList.remove("is-valid")
-        }else{
-            apellidos.classList.remove("is-invalid")
-            apellidos.classList.add("is-valid")
-        }
-        if (correo.value == "") {
-            correo.focus()
-            correo.classList.add("is-invalid")
-            correo.classList.remove("is-valid")
-        }else{
-            correo.classList.remove("is-invalid")
-            correo.classList.add("is-valid")
-            
-
-        }
     }
+
+}
+
+function cambiaridioma(){
+    var idioma = document.getElementById('idioma').value;
+    if(idioma == 'es'){ //español
+        Texto = [
+        {
+            titulo : "BBQ crunch",
+            parrafo : "1 sandwich BBQ crunch (1 filete de pollo apanado)...",
+        },
+        {
+            titulo : "kentucky sandwich",
+            parrafo : "1 kentuchy hamburguesa / sandwich 1 filete de pechuga de pollo apanado, pepinillos)...",
+        },
+        {
+            titulo : "combo BBQ crunch",
+            parrafo : "1 sandwich BBQ crunch ( 1filete de pollo apanado)+ 1 papas pequeñas +1 gaseosapet)...",
+        },
+        {
+            titulo : "kemtuchy coronal",
+            parrafo : "1 kentichy coronal hamburguesa / sandwich filete de pechuga de pollo apanado, ensalada )...",
+        },
+        {
+            titulo : "combo kentuchy sandwich",
+            parrafo : "1 kentuchy hamburguesa/sandwich(1 filete de pechuga de pollo apanado))...",
+        },
+        {
+            titulo : "combo kentuchy coronel sandwich",
+            parrafo : "1 kentuchy coronal hamburguesa/sandwich 1 filete de pechuga de pollo apanado ensalada...",
+        },
+        {
+            titulo : "sandwich crispy BBQ",
+            parrafo : "1 sandwich crispy BBQ 1 filete de pechuga extra grande triple empanizado cebolla crisp)...",
+        },
+        {
+            titulo : "combo sandwich crispy BBQ",
+            parrafo : "1 sandwich crispy BBQ 1 filete de pechuga extra grande triple empanizado cebolla crispi...",
+        }
+    ];
+    }else{//ingles
+        Texto = [{
+            titulo : "BBQ crunch",
+            parrafo : "1 BBQ crunch sandwich (1 breaded chicken fillet)...",
+        },
+        {
+            titulo : "kentucky sandwich",
+            parrafo : "1 Kentucky hamburger / sandwich 1 breaded chicken breast fillet, pickles)...",
+        },
+        {
+            titulo : "combo BBQ crunch",
+            parrafo : "1 BBQ crunch sandwich (1 breaded chicken fillet) + 1 small potatoes + 1 soft drink)...",
+        },
+        {
+            titulo : "kemtuchy coronal",
+            parrafo : "1 kentichy coronal burger / sandwich breaded chicken breast fillet, salad)...",
+        },
+        {
+            titulo : "combo kentuchy sandwich",
+            parrafo : "1 Kentucky hamburger/sandwich (1 breaded chicken breast fillet)...",
+        },
+        {
+            titulo : "combo kentuchy coronel sandwich",
+            parrafo : "1 kentuchy coronal hamburger/sandwich 1 breaded chicken breast fillet salad...",
+        },
+        {
+            titulo : "sandwich crispy BBQ",
+            parrafo : "1 crispy BBQ sandwich 1 extra large breast fillet triple breaded crispy onion)...",
+        },
+        {
+            titulo : "combo sandwich crispy BBQ",
+            parrafo : "1 crispy BBQ sandwich 1 extra large breast fillet triple breaded crispy onion...",
+        }
+    ];
+    }
+    contador = 1;
+    texto.foreach(function(vuelta){
+        document.getElementById('titulo-'+contador).innerText = vuelta.titulo
+        document.getElementById('parrafo-'+contador).innerText = vuelta.parrafo
+        contador++;
+
+    })
 }
